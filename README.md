@@ -15,14 +15,18 @@ I then connected the server to Microsoft Azure using Azure Arc, configured a Log
 
 <h2>Environments Used </h2>
 
-- <b>Ubuntu Server 22.04</b>
+- <b>Ubuntu Server 22.04.3</b>
 - <b>Windows 11 (Host)</b>
 - <b>Microsoft Azure</b>
 
 ## Diagram
+<img width="1251" height="696" alt="Untitled Diagram drawio (1)" src="https://github.com/user-attachments/assets/9e588198-f64c-4652-9257-25bc29fd49be" />
 
 
 # Walkthrough:
+## Downloaded Ubuntu Server 22.04.3 ISO file
+[Ubuntu Server]([https://info.microsoft.com/ww-landing-windows-server-2022.html](https://ubuntu.com/download/server))
+
 ## Created and Configured the Ubuntu Server VM (On-Prem)
 I started by creating a virtual machine in Oracle VirtualBox and named it Ubuntu. To simulate a real on-prem server, I used a Bridged Network Adapter, allowing the VM to receive an IP address from my home network just like a physical server would.
 
