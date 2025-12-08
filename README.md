@@ -3,7 +3,7 @@
 ## Description
 This repository contains a step by step walkthrough of how I built a hybrid cloud monitoring and security lab using Ubuntu Server, UFW, NGINX, Fail2Ban, Azure Arc, and Log Analytics. In this project, I deployed an on-premises Ubuntu VM in Oracle VirtualBox, hardened it with system updates, a host-based firewall (UFW), SSH hardening, and Fail2Ban, and hosted a secure HTTPS web server using NGINX with a self-signed TLS certificate.
 
-I then connected the server to Microsoft Azure using Azure Arc, configured a Log Analytics Workspace to ingest syslog and performance metrics, and used KQL queries to build alerts for high CPU usage, NGINX service failures, and SSH brute-force attempts. Alerts were wired to an Action Group that sends notifications via email and SMS. To validate the setup, I used my Windows host command line to SSH into the VM and simulate brute-force attempts, gaining hands-on experience with Linux hardening, firewall configuration (UFW), cloud monitoring, and hybrid infrastructure security using Azure Arc.
+I then connected the server to Microsoft Azure using Azure Arc, configured a Log Analytics Workspace to ingest syslog and performance metrics, and used KQL queries to build alerts for NGINX service failures and SSH brute-force attempts. Alerts were wired to an Action Group that sends notifications via email and SMS. To validate the setup, I used my Windows host command line to SSH into the VM and simulate brute-force attempts, gaining hands-on experience with Linux hardening, firewall configuration (UFW), cloud monitoring, and hybrid infrastructure security using Azure Arc.
 
 <h2>Languages and Utilities Used</h2>
 
@@ -209,15 +209,6 @@ I created an Action Group with my email/phone so Azure can send me real-time ale
 <img width="1919" height="422" alt="image" src="https://github.com/user-attachments/assets/d08fba2e-e64d-490e-add2-3993be6be52f" />
 
 ## Created Cloud Alerts Rules
-<b>High CPU (CPU > 80% for 5 minutes)</b>
-- Query
-```Kusto
-InsightsMetrics
-| where Name == "PercentProcessorTime"
-| summarize AvgCPU = avg(Val) by bin(TimeGenerated, 5m)
-| where AvgCPU > 80
-```
-
 <b>Nginx stops</b>
 - Query
 ```Kusto
@@ -240,7 +231,8 @@ Syslog
 | where Attempts >= 3
 ```
 
-<img width="1919" height="520" alt="image" src="https://github.com/user-attachments/assets/2f45d8c2-a0c2-4840-927a-9adac217cbde" />
+<img width="1915" height="360" alt="image" src="https://github.com/user-attachments/assets/ff84b724-3b40-42c4-8580-e52ad634e3c0" />
+
 
 ## Real-time Alerts
 <img width="1639" height="437" alt="image" src="https://github.com/user-attachments/assets/6dedaa61-249b-4ed5-a703-a80592875199" />
